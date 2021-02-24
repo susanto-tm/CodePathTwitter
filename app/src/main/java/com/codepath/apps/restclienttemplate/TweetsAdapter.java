@@ -9,9 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.apps.restclienttemplate.databinding.ItemTweetBinding;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import java.util.List;
@@ -20,6 +22,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
     Context context;
     List<Tweet> tweets;
+
     // Pass in context and list of tweets
     public TweetsAdapter(Context context, List<Tweet> tweets) {
         this.context = context;
@@ -30,8 +33,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // For each row, inflate the layout
-        View view = LayoutInflater.from(context).inflate(R.layout.item_tweet, parent, false);
-        return new ViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        ItemTweetBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_tweet, parent, false);
+
+//        View view = LayoutInflater.from(context).inflate(R.layout.item_tweet, parent, false);
+        return new ViewHolder(binding);
     }
 
     // Bind values based on the position of the element
@@ -49,6 +56,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items
+    public void addAll(List<Tweet> tweetList) {
+        tweets.addAll(tweetList);
+        notifyDataSetChanged();
+    }
+
     // Define a ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -56,18 +75,21 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvBody;
         TextView tvScreenName;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        private final ItemTweetBinding binding;
 
-            ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
-            tvBody = itemView.findViewById(R.id.tvBody);
-            tvScreenName = itemView.findViewById(R.id.tvScreenName);
+        public ViewHolder(@NonNull ItemTweetBinding binding) {
+            super(binding.getRoot());
+
+            this.binding = binding;
+
+            ivProfileImage = this.binding.ivProfileImage;
+            tvBody = this.binding.tvBody;
+            tvScreenName = this.binding.tvScreenName;
         }
 
         public void bind(Tweet tweet) {
-            tvBody.setText(tweet.body);
-            tvScreenName.setText(tweet.user.screenName);
-            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            binding.setTweet(tweet);
+            binding.executePendingBindings();
         }
     }
 
