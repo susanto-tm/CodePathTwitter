@@ -1,10 +1,12 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.codepath.apps.restclienttemplate.DetailTweetActivity;
+import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.databinding.ItemTweetBinding;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
@@ -74,6 +77,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvScreenName;
+        RelativeLayout rvTweetContainer;
 
         private final ItemTweetBinding binding;
 
@@ -85,11 +89,22 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ivProfileImage = this.binding.ivProfileImage;
             tvBody = this.binding.tvBody;
             tvScreenName = this.binding.tvScreenName;
+            rvTweetContainer = this.binding.rvTweetContainer;
+
         }
 
-        public void bind(Tweet tweet) {
+        public void bind(final Tweet tweet) {
             binding.setTweet(tweet);
             binding.executePendingBindings();
+            rvTweetContainer.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, DetailTweetActivity.class);
+                    intent.putExtra("tweetId", tweet.id);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
