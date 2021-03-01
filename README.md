@@ -49,7 +49,7 @@ One of the main challenges I faced was trying to get the replies or tweets in wh
 
 ## License
 
-    Copyright [2021] [Timothy Alexander]
+    Copyright 2021 Timothy Alexander
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
