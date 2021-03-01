@@ -6,7 +6,9 @@
     <string name="intent_scheme">oauth</string>
     <string name="intent_host">cprest</string>
     <string name="tweet_relative_date_time">• %s</string>
-    <string name="handle_format">\@%s</string>
-    <string name="replying_handle_format">Replying to \@%s</string>
+    <string name="handle_format">\@%1$s</string>
+    <string name="replying_handle_format">Replying to \@%1$s</string>
+    <string name="tweet_retweets_count"><![CDATA[<b>%d</b>]]> Retweets</string>
+    <string name="tweet_favorites_count"><![CDATA[<b>%1$d</b>]]> Likes</string>
 
 </resources>

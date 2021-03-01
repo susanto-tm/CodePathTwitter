@@ -10,12 +10,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.codepath.apps.restclienttemplate.adapters.TweetRepliesAdapter;
+import com.codepath.apps.restclienttemplate.adapters.TweetDetailAdapter;
 import com.codepath.apps.restclienttemplate.databinding.ActivityDetailTweetBinding;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,11 +28,14 @@ public class DetailTweetActivity extends AppCompatActivity {
     private final String TAG = "DetailTweetActivity";
     ActivityDetailTweetBinding binding;
     TwitterClient client;
-    List<Tweet> tweets;
-    TweetRepliesAdapter adapter;
+    TweetDetailAdapter adapter;
     List<Tweet> tweetReplies;
 
     RecyclerView rvDetailReplies;
+
+    /* TODO -- Make embedded image and videos based on different layouts, determine type using
+    *   extended entities field in json with media_url_https and get from Photo Media URL formatting for photos
+    *   and use video_info variants for videos */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +54,14 @@ public class DetailTweetActivity extends AppCompatActivity {
         rvDetailReplies = binding.rvDetailReplies;
         rvDetailReplies.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        adapter = new TweetRepliesAdapter(this, tweetReplies);
+        adapter = new TweetDetailAdapter(this, tweetReplies);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvDetailReplies.setLayoutManager(layoutManager);
         rvDetailReplies.setAdapter(adapter);
         rvDetailReplies.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
-    private void populateTweetReplies(long tweetId, final String screenName) {
+    private void populateTweetReplies(final long tweetId, final String screenName) {
         Log.i(TAG, "Screen Name: " + screenName);
         client.getTweetReplies(new JsonHttpResponseHandler() {
 

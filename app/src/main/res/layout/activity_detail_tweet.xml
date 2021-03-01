@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.text.Html" />
+        <import type="android.content.Context" />
         <variable name="tweet" type="com.codepath.apps.restclienttemplate.models.Tweet" />
     </data>
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DetailTweetActivity"
@@ -52,7 +54,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_toEndOf="@+id/ivUserProfile"
                 android:textColor="#838383"
-                android:text="@{tweet.user.screenName}"
+                android:text="@{@string/handle_format(tweet.user.screenName)}"
                 tools:text="\@twitterHandle" />
 
             <TextView
@@ -89,6 +91,63 @@
                 android:layout_toEndOf="@+id/tvDetailTime"
                 android:text="@{String.format(@string/tweet_relative_date_time, tweet.detailDate)}"
                 tools:text="Feb 27, 2021" />
+
+            <View
+                android:id="@+id/separator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tvDetailDate"
+                android:layout_marginTop="10dp"
+                android:background="#DCDCDC" />
+
+            <TextView
+                android:id="@+id/tvRetweetCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separator1"
+                android:layout_marginTop="0dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@{Html.fromHtml(@string/tweet_retweets_count(tweet.retweets_count))}"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                tools:text="200 Retweets" />
+
+            <TextView
+                android:id="@+id/tvFavoritesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separator1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/tvRetweetCount"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@{Html.fromHtml(@string/tweet_favorites_count(tweet.favorites_count))}"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                tools:text="500 Likes" />
+
+            <View
+                android:id="@+id/separator2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tvRetweetCount"
+                android:layout_marginTop="0dp"
+                android:background="#DCDCDC" />
+
+            <TextView
+                android:id="@+id/tvMoreReplies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separator2"
+                android:layout_marginTop="10dp"
+                android:text="More replies"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
         </RelativeLayout>
 
 

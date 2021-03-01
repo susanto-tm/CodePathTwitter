@@ -64,7 +64,7 @@
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@+id/tvScreenName"
             android:textColor="#838383"
-            android:text="@{String.format(@string/handle_format, tweet.user.screenName)}"
+            android:text="@{@string/handle_format(tweet.user.screenName)}"
             tools:text="\@twitterHandle" />
 
         <TextView
@@ -80,7 +80,7 @@
             tools:text="\u2022 32s" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/ivComposeTimeline"
             android:layout_width="17dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvBody"
@@ -106,7 +106,7 @@
             android:layout_below="@+id/tvBody"
             android:layout_marginStart="57dp"
             android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/ivComposeTimeline"
             android:background="@drawable/retweet_selector" />
 
         <TextView
@@ -118,8 +118,34 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@+id/ivProfileImage"
             android:textColor="#838383"
-            android:text="@{String.format(@string/replying_handle_format, tweet.replyingTo)}"
+            android:text="@{@string/replying_handle_format(tweet.replyingTo)}"
             tools:text="Replying to \@handle" />
+
+        <TextView
+            android:id="@+id/tvLikesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBody"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/likeButton"
+            android:textColor="@color/medium_gray"
+            android:textSize="12sp"
+            app:likesCount="@{String.valueOf(tweet.favorites_count)}"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tvRetweetsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBody"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/button2"
+            android:textColor="@color/medium_gray"
+            android:textSize="12sp"
+            app:retweetCount="@{String.valueOf(tweet.retweets_count)}"
+            tools:text="5" />
 
     </RelativeLayout>
 </layout>

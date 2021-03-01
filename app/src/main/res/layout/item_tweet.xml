@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,7 +12,6 @@
         android:id="@+id/rvTweetContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:paddingTop="15dp"
@@ -63,7 +63,7 @@
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@+id/tvScreenName"
             android:textColor="#838383"
-            android:text="@{String.format(@string/handle_format, tweet.user.screenName)}"
+            android:text="@{@string/handle_format(tweet.user.screenName)}"
             tools:text="\@twitterHandle" />
 
         <TextView
@@ -78,8 +78,34 @@
             android:textColor="#838383"
             tools:text="\u2022 32s" />
 
+        <TextView
+            android:id="@+id/tvLikesTimelineCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBody"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/likeButton"
+            android:textColor="@color/medium_gray"
+            android:textSize="12sp"
+            app:likesCount="@{String.valueOf(tweet.favorites_count)}"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tvRetweetsTimelineCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBody"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/button2"
+            android:textColor="@color/medium_gray"
+            android:textSize="12sp"
+            app:retweetCount="@{String.valueOf(tweet.retweets_count)}"
+            tools:text="20" />
+
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/ivComposeTimeline"
             android:layout_width="17dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvBody"
@@ -105,7 +131,7 @@
             android:layout_below="@+id/tvBody"
             android:layout_marginStart="57dp"
             android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/ivComposeTimeline"
             android:background="@drawable/retweet_selector" />
 
     </RelativeLayout>
