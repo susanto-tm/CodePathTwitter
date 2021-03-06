@@ -10,5 +10,7 @@
     <string name="replying_handle_format">Replying to \@%1$s</string>
     <string name="tweet_retweets_count"><![CDATA[<b>%d</b>]]> Retweets</string>
     <string name="tweet_favorites_count"><![CDATA[<b>%1$d</b>]]> Likes</string>
+    <string name="tweet">Tweet</string>
+    <string name="whats_happening">What\'s happening?</string>
 
 </resources>
