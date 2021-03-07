@@ -4,6 +4,8 @@
 
 Time spent: **10** hours spent in total
 
+## Twitter Part 2
+
 ## User Stories
 
 The following **required** functionality is completed:
