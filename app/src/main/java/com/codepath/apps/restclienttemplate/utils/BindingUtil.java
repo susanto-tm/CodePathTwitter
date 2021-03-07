@@ -4,6 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.R;
@@ -20,8 +21,8 @@ public class BindingUtil {
     }
 
     @BindingAdapter({"bind:likesCount"})
-    public static void getLikesCount(TextView view, String likes) {
-        view.setText((Integer.parseInt(likes) > 0) ? likes : "");
+    public static void getLikesCount(TextView view, int likes) {
+        view.setText(likes > 0 ? String.valueOf(likes) : "");
     }
 
     @BindingAdapter({"bind:retweetCount"})

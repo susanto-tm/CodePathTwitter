@@ -88,7 +88,7 @@
             android:layout_toEndOf="@+id/likeButton"
             android:textColor="@color/medium_gray"
             android:textSize="12sp"
-            app:likesCount="@{String.valueOf(tweet.favorites_count)}"
+            app:likesCount="@{tweet.favorites_count}"
             tools:text="5" />
 
         <TextView

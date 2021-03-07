@@ -96,11 +96,11 @@
             android:layout_below="@+id/tvBody"
             android:layout_marginStart="57dp"
             android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/button2"
+            android:layout_toEndOf="@+id/retweetButton"
             android:background="@drawable/like_state_selector" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/retweetButton"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_below="@+id/tvBody"
@@ -131,7 +131,7 @@
             android:layout_toEndOf="@+id/likeButton"
             android:textColor="@color/medium_gray"
             android:textSize="12sp"
-            app:likesCount="@{String.valueOf(tweet.favorites_count)}"
+            app:likesCount="@{tweet.favorites_count}"
             tools:text="5" />
 
         <TextView
@@ -141,7 +141,7 @@
             android:layout_below="@+id/tvBody"
             android:layout_marginStart="8dp"
             android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/button2"
+            android:layout_toEndOf="@+id/retweetButton"
             android:textColor="@color/medium_gray"
             android:textSize="12sp"
             app:retweetCount="@{String.valueOf(tweet.retweets_count)}"

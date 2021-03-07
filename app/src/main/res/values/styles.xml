@@ -6,11 +6,16 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="actionBarStyle">@style/TwitterActionBar</item>
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="TwitterActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/twitter_blue</item>
     </style>
 
 </resources>

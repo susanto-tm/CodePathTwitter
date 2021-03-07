@@ -2,26 +2,45 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/timelineCoordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TimelineActivity"
-        android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeContainer"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:context=".TimelineActivity"
+            android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTweets"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp" />
+                android:layout_height="match_parent">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTweets"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp" />
 
-    </LinearLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/composeFab"
+            android:src="@drawable/vector_compose_fab"
+            app:fabSize="normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:backgroundTint="@color/twitter_blue"
+            android:layout_margin="16dp"
+            app:layout_behavior="com.codepath.apps.restclienttemplate.utils.ScrollAwareFABBehavior"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
