@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="likes" type="java.lang.Integer"/>
         <variable name="tweet" type="com.codepath.apps.restclienttemplate.models.Tweet" />
     </data>
 

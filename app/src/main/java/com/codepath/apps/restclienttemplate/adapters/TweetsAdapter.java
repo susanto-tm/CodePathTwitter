@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codepath.apps.restclienttemplate.BR;
 import com.codepath.apps.restclienttemplate.DetailTweetActivity;
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TwitterApp;
@@ -123,8 +122,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
             likeButton.setSelected(tweet.liked);
 
-            binding.setLikes(tweet.favorites_count);
-
             likeButton.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -138,7 +135,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                                 tweet.liked = true;
                                 tweet.favorites_count += 1;
                                 likeButton.setSelected(true);
-                                binding.setVariable(BR.likes, tweet.favorites_count);
                             }
 
                             @Override
@@ -156,7 +152,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                                 tweet.liked = false;
                                 tweet.favorites_count -= 1;
                                 likeButton.setSelected(false);
-                                binding.setVariable(BR.likes, tweet.favorites_count);
                             }
 
                             @Override
@@ -168,7 +163,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 }
             });
 
+
+
             binding.executePendingBindings();
+
+
 
         }
     }
