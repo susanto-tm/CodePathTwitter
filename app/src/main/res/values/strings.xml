@@ -14,5 +14,6 @@
     <string name="whats_happening">What\'s happening?</string>
     <string name="tweet_empty">Sorry, your tweet cannot be empty</string>
     <string name="tweet_long">Sorry, your tweet is too long</string>
+    <string name="tweet_counter">%1$d/%2$d</string>
 
 </resources>

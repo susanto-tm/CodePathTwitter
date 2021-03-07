@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="char_count" type="java.lang.Integer" />
+        <variable name="max_char_count" type="java.lang.Integer" />
+    </data>
     
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/composeCoordinatorLayout"
@@ -9,7 +15,6 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ComposeActivity">
@@ -38,6 +43,19 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:text="@string/tweet" />
+
+            <TextView
+                android:id="@+id/tvCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etCompose"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="@{@string/tweet_counter(char_count, max_char_count)}"
+                tools:text="140" />
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
