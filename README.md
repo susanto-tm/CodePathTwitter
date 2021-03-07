@@ -44,7 +44,7 @@ GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I had difficulties figuring out how to use LiveData to update the likes button counter. I was not able to achieve it but did try to implement it. Another difficulty was getting the likes button to change colors using a selector when clicked and update using a POST request to the Twitter API.
 
 ## Open-source libraries used
 
@@ -53,7 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2021] [Timothy Alexander]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
